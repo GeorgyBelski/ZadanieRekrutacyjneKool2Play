@@ -12,10 +12,12 @@ public class PlayerMovementController : MonoBehaviour
     {
         camera = Camera.main;
     }
-
-    void Update()
+    private void FixedUpdate()
     {
         Moving();
+    }
+    void LateUpdate()
+    {   
         Turning();
     }
     void Moving()
@@ -29,9 +31,9 @@ public class PlayerMovementController : MonoBehaviour
     void Turning()
     {
         Ray camRay = camera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(camRay, out RaycastHit floorHit, 30, Globals.groundMask))
+        if (Physics.Raycast(camRay, out RaycastHit groundHit, 30, Globals.groundMask))
         {
-            transform.LookAt(new Vector3(floorHit.point.x, transform.position.y, floorHit.point.z));
+            transform.LookAt(new Vector3(groundHit.point.x, transform.position.y, groundHit.point.z));
         }
     }
 }
