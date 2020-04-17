@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    public float speed = 10;
+    public static Vector3 groundPoint = Vector3.zero;
 
+    public float speed = 10;
+    public Transform player;
     new Camera camera;
 
     void Start()
     {
         camera = Camera.main;
+        if (!player)
+        {
+            player = transform.Find("Player");
+        }
     }
     private void FixedUpdate()
     {
@@ -33,7 +39,8 @@ public class PlayerMovementController : MonoBehaviour
         Ray camRay = camera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(camRay, out RaycastHit groundHit, 30, Globals.groundMask))
         {
-            transform.LookAt(new Vector3(groundHit.point.x, transform.position.y, groundHit.point.z));
+            groundPoint = groundHit.point;
+            player.transform.LookAt(new Vector3(groundHit.point.x, transform.position.y, groundHit.point.z));
         }
     }
 }

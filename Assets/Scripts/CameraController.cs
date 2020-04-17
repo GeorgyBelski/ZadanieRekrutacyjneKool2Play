@@ -16,6 +16,10 @@ public class CameraController : MonoBehaviour
         {
             constraint = GetComponent<PositionConstraint>();
         }
+        if (!player)
+        {
+            player = GameObject.Find("Player_parent").transform;
+        }
         LookAtPlayer();
         previousPlayerPosition = player.position;
         

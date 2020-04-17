@@ -1,0 +1,43 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public abstract class HealthController : MonoBehaviour
+{
+    public Image healthBar;
+    public int maxHealth = 1000;
+    public int health = 1000;
+    float ratio = 1f;
+
+    protected void Start()
+    {
+        
+    }
+    void Update()
+    {
+        
+    }
+    void CalculateRatio()
+    {
+        ratio = (float)health / maxHealth;
+        healthBar.fillAmount = ratio;
+    }
+    void ApplyDamage(int damage)
+    {
+        if(health > damage)
+        {
+            health -= damage;
+        }
+        else
+        {
+            health = 0;
+            ApplyDeath();
+        }
+        CalculateRatio();
+    }
+    public abstract void ApplyDeath();
+
+
+    
+}
