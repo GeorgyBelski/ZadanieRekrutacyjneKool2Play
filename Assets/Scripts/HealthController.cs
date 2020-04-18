@@ -12,7 +12,12 @@ public abstract class HealthController : MonoBehaviour
 
     protected void Start()
     {
-        
+        if (!healthBar) 
+        {
+            var healthBarObject = transform.Find("Canvas").Find("Image_Health");
+            healthBar = healthBarObject.GetComponent<Image>();
+        }
+        CalculateRatio();
     }
     void Update()
     {
@@ -23,7 +28,7 @@ public abstract class HealthController : MonoBehaviour
         ratio = (float)health / maxHealth;
         healthBar.fillAmount = ratio;
     }
-    void ApplyDamage(int damage)
+    public virtual void ApplyDamage(int damage)
     {
         if(health > damage)
         {

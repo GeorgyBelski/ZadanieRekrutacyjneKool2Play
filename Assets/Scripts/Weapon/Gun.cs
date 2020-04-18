@@ -33,23 +33,25 @@ public class Gun : Weapon
     }
     public override void Fire()
     {
-        if(timerCooldown > 0) { return; }
+        if(timerCooldown > 0 || state != WeaponState.Ready) { return; }
+
+        state = WeaponState.Cooldawn;
         timerCooldown = cooldawn;
-        //Debug.Log("Gun Shooting");
+        
         Bullet bullet;
-        if(bullets.Count > 1)
+        if(bullets.Count > 0)
         {
             bullet = bullets[0];
             bullets.Remove(bullet);
-            bullet.transform.rotation = this.transform.rotation;
-            bullet.transform.position = this.transform.position; 
+          //  bullet.transform.rotation = this.transform.rotation;
+         //   bullet.transform.position = this.transform.position; 
         }
         else
         {
-            bullet = Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
+            bullet = Instantiate(bulletPrefab);
         }
         bulletsInAir.Add(bullet);
-        bullet.ShootABullet();
+        bullet.ShootABullet(this.transform);
     }
 
     public static void DisableBullet(Bullet bullet)
@@ -58,5 +60,10 @@ public class Gun : Weapon
         bulletsInAir.Remove(bullet);
         bullets.Add(bullet);
         
+    }
+
+    protected override void Reload()
+    {
+        state = WeaponState.Ready;
     }
 }

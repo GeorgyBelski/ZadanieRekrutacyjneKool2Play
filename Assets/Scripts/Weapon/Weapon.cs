@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WeaponState { Ready, Cooldawn, Reload }
 public abstract class Weapon : MonoBehaviour
 {
     public float cooldawn = .5f;
     public float timerCooldown = 0f;
-
+    public WeaponState state = WeaponState.Ready;
     void Start()
     {
         
@@ -23,9 +24,16 @@ public abstract class Weapon : MonoBehaviour
         {
             timerCooldown -= Time.deltaTime;
         }
-        else { return; }
+        else {
+            if (state == WeaponState.Cooldawn)
+            {   
+                Reload();
+            }
+            return; 
+        }
     }
 
     public abstract void Fire();
+    protected abstract void Reload();
 
 }

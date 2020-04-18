@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5433464362819058998}
   - component: {fileID: 7294919537912932640}
   - component: {fileID: 2131241167636043077}
-  - component: {fileID: -4267439428425928509}
   - component: {fileID: 6091185018169417048}
+  - component: {fileID: -4267439428425928509}
   - component: {fileID: 4761192696480966534}
   m_Layer: 0
   m_Name: Bullet
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3045095928711333747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.43613872, y: 0.7024306, z: 9.19}
-  m_LocalScale: {x: 0.07392323, y: 0.07392323, z: 0.21136464}
+  m_LocalScale: {x: 0.07392323, y: 0.07392323, z: 0.09}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -82,6 +82,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6091185018169417048
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3045095928711333747}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-4267439428425928509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,21 +108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 40
-  lifetime: 0.8
+  lifetime: 0.5
+  damage: 10
   trail: {fileID: 4761192696480966534}
---- !u!65 &6091185018169417048
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3045095928711333747}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!96 &4761192696480966534
 TrailRenderer:
   serializedVersion: 2
@@ -150,7 +151,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1

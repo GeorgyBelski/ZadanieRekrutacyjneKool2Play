@@ -16,10 +16,17 @@ public class WeaponController : MonoBehaviour
         PutInHand(0);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Fire();
         ChengeWeapon();
+
+        if (activeWeapon)
+        {
+            Vector3 groundPoint = PlayerMovementController.groundPoint;
+            Vector3 lookAtpoint = new Vector3(groundPoint.x, activeWeapon.transform.position.y, groundPoint.z);
+            activeWeapon.transform.LookAt(lookAtpoint);
+        }
     }
     void Fire()
     {
