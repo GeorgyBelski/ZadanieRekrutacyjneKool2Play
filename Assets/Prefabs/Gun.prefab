@@ -47,7 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldawn: 0.4
   timerCooldown: 0
-  bulletPrefab: {fileID: -4267439428425928509, guid: a88b1dc7b7c182c4fa07edc59d1cb72f,
+  state: 0
+  missilePrefab: {fileID: -4267439428425928509, guid: a88b1dc7b7c182c4fa07edc59d1cb72f,
     type: 3}
   bulletSpeed: 30
   bulletsCount: 0

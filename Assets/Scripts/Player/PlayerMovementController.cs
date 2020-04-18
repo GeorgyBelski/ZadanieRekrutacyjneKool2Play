@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovementController : MonoBehaviour
 {
     public static Vector3 groundPoint = Vector3.zero;
+    public static Vector3 velocity;
 
     public float speed = 10;
     public Transform player;
@@ -31,7 +32,8 @@ public class PlayerMovementController : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
         Vector3 inputAxisVector =  new Vector3(x, 0, z).normalized;
-        transform.position += inputAxisVector * speed * Time.deltaTime;
+        velocity = inputAxisVector * speed;
+        transform.position += velocity * Time.deltaTime;
 
     }
     void Turning()

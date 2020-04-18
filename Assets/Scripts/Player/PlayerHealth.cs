@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerHealth : HealthController
 {
-    
+    public static PlayerHealth player;
     new void Start()
     {
         base.Start();
+        player = this;
     }
 
     void Update()

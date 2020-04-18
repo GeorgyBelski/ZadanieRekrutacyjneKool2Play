@@ -30,6 +30,7 @@ public abstract class HealthController : MonoBehaviour
     }
     public virtual void ApplyDamage(int damage)
     {
+        Debug.Log("ApplyDamage - " + this.gameObject);
         if(health > damage)
         {
             health -= damage;

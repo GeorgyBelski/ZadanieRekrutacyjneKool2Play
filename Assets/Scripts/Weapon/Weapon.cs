@@ -6,6 +6,7 @@ using UnityEngine;
 public enum WeaponState { Ready, Cooldawn, Reload }
 public abstract class Weapon : MonoBehaviour
 {
+    public Missile missilePrefab;
     public float cooldawn = .5f;
     public float timerCooldown = 0f;
     public WeaponState state = WeaponState.Ready;
@@ -33,7 +34,32 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    public abstract void Fire();
+    public virtual void Fire()
+    {
+        if (timerCooldown > 0 || state != WeaponState.Ready) { return; }
+
+        state = WeaponState.Cooldawn;
+        timerCooldown = cooldawn;
+
+        SpecificFire();
+    }
+
+    public static void CreateMissile(List<Missile> missiles, List<Missile> missilesInAir, Missile missilePrefab, Transform weapon)
+    {
+        Missile missile;
+        if (missiles.Count > 0)
+        {
+            missile = missiles[0];
+            missiles.Remove(missile);
+        }
+        else
+        {
+            missile = Instantiate(missilePrefab);
+        }
+        missilesInAir.Add(missile);
+        missile.ReleaseMissile(weapon);
+    }
+    public abstract void SpecificFire();
     protected abstract void Reload();
 
 }

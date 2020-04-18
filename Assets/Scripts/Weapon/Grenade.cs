@@ -4,29 +4,33 @@ using UnityEngine;
 
 public class Grenade : Weapon
 {
-    public static List<Grenade> grenades = new List<Grenade>();
-    public static List<Grenade> grenadesInAir = new List<Grenade>();
+    public static List<Missile> grenades = new List<Missile>();
+    public static List<Missile> grenadesInAir = new List<Missile>();
+
+    //public Missile missilePrefab;
     public float reloadTime = 0.2f;
+    public LineRenderer trajectory;
+    [Range(6, 24)]
+    public int trajectoryPositions = 14;
     Vector3 startScale;
 
     void Start()
     {
         startScale = transform.localScale;
         cooldawn -= reloadTime;
+        trajectory.positionCount = trajectoryPositions;
     }
 
-    new void Update()
+    void FixedUpdate()
     {
         base.Update();
+        ShowTrajectory();
     }
 
-    public override void Fire()
+    public override void SpecificFire()
     {
-        if (timerCooldown > 0 || state != WeaponState.Ready) { return; }
-
-        state = WeaponState.Cooldawn;
-        timerCooldown = cooldawn;
-        Debug.Log("Grenade is throwed");
+        CreateMissile(grenades, grenadesInAir, missilePrefab, this.transform);
+        this.transform.localScale = Vector3.zero;
     }
     protected override void Reload()
     {
@@ -43,5 +47,26 @@ public class Grenade : Weapon
         }
         state = WeaponState.Ready;
         Debug.Log("Ready");
+    }
+    void ShowTrajectory()
+    {
+        Vector3 target = PlayerMovementController.groundPoint;
+        Vector3 start = new Vector3(transform.position.x, 0, transform.position.z);
+        Vector3 direction = target - start;
+        float distance = direction.magnitude;
+        for (int i=0; i< trajectory.positionCount; i++)
+        {
+            Vector3 position = start + direction / trajectory.positionCount * (i+1);
+            float deltaX = (position - start).magnitude;
+            position.y = deltaX - deltaX * deltaX / distance;
+
+            trajectory.SetPosition(i, position);
+        }
+    }
+    public static void DisableGrenade(Missile missile)
+    {
+        missile.gameObject.SetActive(false);
+        grenadesInAir.Remove(missile);
+        grenades.Add(missile);
     }
 }

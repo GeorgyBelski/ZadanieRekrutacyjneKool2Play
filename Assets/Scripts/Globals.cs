@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Globals
 {
+    public static float gravity = 9.8f;
     public static int groundLayer = 8;
     public static int groundMask = 1 << groundLayer;
 
