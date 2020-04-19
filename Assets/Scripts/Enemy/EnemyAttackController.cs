@@ -86,13 +86,14 @@ public class EnemyAttackController : MonoBehaviour
 
     public void RestartState()
     {
-        animator.SetBool("Attack", false);
+        if (animator)
+        { animator.SetBool("Attack", false); }
         state = EnemyState.Move;
         eyeMaterials.ForEach(material => material.color = startEyeColor);
     }
 
     void GameOver()
     {
-        state = EnemyState.Move;
+        RestartState();
     }
 }

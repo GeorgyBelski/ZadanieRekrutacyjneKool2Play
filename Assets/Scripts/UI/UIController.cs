@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    public delegate void RestartLevel();
+    public static event RestartLevel restartLevel;
 
     public static UIController controller;
     public Text killedEnemis, gameOver;
@@ -61,5 +63,13 @@ public class UIController : MonoBehaviour
     void ShowGameOver()
     {
         gameOver.gameObject.SetActive(true);
+    }
+
+    public void Restart() // Call from Button
+    {
+        killedEnemisNumber = 0;
+        killedEnemis.text = "0";
+        gameOver.gameObject.SetActive(false);
+        restartLevel.Invoke();
     }
 }

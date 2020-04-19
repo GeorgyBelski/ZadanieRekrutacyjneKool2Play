@@ -18,6 +18,8 @@ public class PlayerMovementController : MonoBehaviour
         {
             player = transform.Find("Player");
         }
+
+        UIController.restartLevel += Restart;
     }
     private void FixedUpdate()
     {
@@ -44,5 +46,10 @@ public class PlayerMovementController : MonoBehaviour
             groundPoint = groundHit.point;
             player.transform.LookAt(new Vector3(groundHit.point.x, transform.position.y, groundHit.point.z));
         }
+    }
+
+    void Restart()
+    {
+
     }
 }

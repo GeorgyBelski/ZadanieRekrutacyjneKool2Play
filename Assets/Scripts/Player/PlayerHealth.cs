@@ -12,6 +12,8 @@ public class PlayerHealth : HealthController
     {
         base.Start();
         player = this;
+
+        UIController.restartLevel += Restart;
     }
 
     void Update()
@@ -21,8 +23,14 @@ public class PlayerHealth : HealthController
     
     public override void ApplyDeath()
     {
-        Debug.Log("Player Death");
         playerDeathEvent.Invoke();
         gameObject.SetActive(false);
+    }
+
+    void Restart()
+    {
+        health = maxHealth;
+        CalculateRatio();
+        gameObject.SetActive(true);
     }
 }

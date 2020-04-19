@@ -17,7 +17,7 @@ public class GrenadeMissile : Missile
     
     void Start()
     {
-        
+        UIController.restartLevel += Restart;
     }
     void LateUpdate()
     {
@@ -63,5 +63,13 @@ public class GrenadeMissile : Missile
     {
         if (collision.gameObject.layer == Globals.enemyLayer)
         { DisableMissile(); }
+    }
+
+    void Restart()
+    {
+        explosionsInReserve.ForEach(exp => Destroy(exp.gameObject));
+        explosionsInReserve.Clear();
+        explosionsInAir.ForEach(exp => Destroy(exp.gameObject));
+        explosionsInAir.Clear();
     }
 }
