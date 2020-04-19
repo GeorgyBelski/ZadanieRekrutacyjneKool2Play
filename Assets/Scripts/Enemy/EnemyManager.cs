@@ -21,6 +21,7 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         PlayerHealth.playerDeathEvent += GameOver;
+        UIController.restartLevel += Restart;
     }
 
     void Update()
@@ -90,5 +91,14 @@ public class EnemyManager : MonoBehaviour
     void GameOver()
     {
         isGameOver = true;
+    }
+
+    void Restart()
+    {
+        isGameOver = false;
+        enemiesInReserve.ForEach(enemy => Destroy(enemy.gameObject));
+        enemiesInReserve.Clear();
+        enemiesOnScene.ForEach(enemy => Destroy(enemy.gameObject));
+        enemiesOnScene.Clear();
     }
 }

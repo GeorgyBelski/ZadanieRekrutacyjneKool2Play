@@ -17,6 +17,7 @@ public class EnemyMovementController : MonoBehaviour
         { player = PlayerHealth.player.transform; }
 
         PlayerHealth.playerDeathEvent += GameOver;
+        UIController.restartLevel += Restart;
     }
 
     void FixedUpdate()
@@ -53,6 +54,11 @@ public class EnemyMovementController : MonoBehaviour
     void GameOver()
     {
         player = null;
-        enemy.transform.LookAt(transform.position + new Vector3(Random.Range(-1,1), 0, Random.Range(-1, 1)));
+       // enemy.LookAt(transform.position + new Vector3(Random.Range(-1,1), 0, Random.Range(-1, 1)));
+    }
+
+    void Restart()
+    {
+        player = PlayerHealth.player.transform;
     }
 }

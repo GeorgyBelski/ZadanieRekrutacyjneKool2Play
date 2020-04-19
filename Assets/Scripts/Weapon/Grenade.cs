@@ -19,6 +19,7 @@ public class Grenade : Weapon
         startScale = transform.localScale;
         cooldawn -= reloadTime;
         trajectory.positionCount = trajectoryPositions;
+        UIController.restartLevel += Restart;
     }
 
     void FixedUpdate()
@@ -35,7 +36,9 @@ public class Grenade : Weapon
     protected override void Reload()
     {
         state = WeaponState.Reload;
-        StartCoroutine(ShowUp());
+
+        if (gameObject.activeSelf)
+        { StartCoroutine(ShowUp()); }
     }
 
     IEnumerator ShowUp()
@@ -67,5 +70,10 @@ public class Grenade : Weapon
         missile.gameObject.SetActive(false);
         grenadesInAir.Remove(missile);
         grenades.Add(missile);
+    }
+
+    void Restart()
+    {
+        Reload();
     }
 }
