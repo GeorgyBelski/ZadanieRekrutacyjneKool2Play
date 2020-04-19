@@ -60,7 +60,6 @@ public class EnemyAttackController : MonoBehaviour
     }
     void Attack() // Call from Animation
     {
-        Debug.Log("Attack");
         PlayerHealth.player.ApplyDamage(damage);
     }
     void FinishAttack()// Call from Animation
@@ -79,9 +78,14 @@ public class EnemyAttackController : MonoBehaviour
     {
         if (other.gameObject.layer == Globals.playerLayer)
         {
-            animator.SetBool("Attack", false);
-            state = EnemyState.Move;
-            eyeMaterials.ForEach(material => material.color = startEyeColor);
+            RestartState();
         }
+    }
+
+    public void RestartState()
+    {
+        animator.SetBool("Attack", false);
+        state = EnemyState.Move;
+        eyeMaterials.ForEach(material => material.color = startEyeColor);
     }
 }

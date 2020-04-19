@@ -23,7 +23,7 @@ public abstract class HealthController : MonoBehaviour
     {
         
     }
-    void CalculateRatio()
+    protected void CalculateRatio()
     {
         ratio = (float)health / maxHealth;
         healthBar.fillAmount = ratio;
