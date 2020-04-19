@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealth : HealthController
 {
     public static PlayerHealth player;
-    new void Start()
+    void Awake()
     {
         base.Start();
         player = this;
