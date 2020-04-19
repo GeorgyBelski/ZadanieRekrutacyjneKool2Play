@@ -40,6 +40,7 @@ public abstract class Missile : MonoBehaviour
     {
         if (Physics.Raycast(previousPosition, direction, out RaycastHit hit, distance, layerMask))
         {
+            transform.position = hit.point;
             /*
             Debug.DrawLine(previousPosition, transform.position, Color.red);
             Debug.DrawLine(transform.position, hit.collider.gameObject.transform.position, Color.green);

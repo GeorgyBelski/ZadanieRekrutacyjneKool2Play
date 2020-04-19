@@ -615,8 +615,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 2376832423505363655}
-  maxHealth: 500
-  health: 500
+  maxHealth: 300
+  health: 300
 --- !u!114 &6053045145507723025
 MonoBehaviour:
   m_ObjectHideFlags: 0

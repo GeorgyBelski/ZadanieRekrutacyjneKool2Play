@@ -196,7 +196,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4764625423365356264}
-  m_Layer: 10
+  - component: {fileID: 3737907696210543855}
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,6 +219,19 @@ Transform:
   m_Father: {fileID: 4764625424958316552}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3737907696210543855
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764625423365356267}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.06}
+  m_Center: {x: 0, y: 0.5, z: 1.02}
 --- !u!1 &4764625423691063746
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +244,7 @@ GameObject:
   - component: {fileID: 4764625423691063742}
   - component: {fileID: 4764625423691063745}
   - component: {fileID: 4764625423691063744}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: eye_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +291,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 15773338f37cd5e43a4817024f074af4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -322,8 +336,7 @@ GameObject:
   - component: {fileID: 4764625424553486411}
   - component: {fileID: 4764625424553486406}
   - component: {fileID: 4764625424553486409}
-  - component: {fileID: 4764625424553486408}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,19 +406,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4764625424553486408
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4764625424553486410}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4764625424660183051
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 4764625424944430832}
   - component: {fileID: 4764625424944430835}
   - component: {fileID: 4764625424944430834}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: eye_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 15773338f37cd5e43a4817024f074af4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -658,6 +658,8 @@ GameObject:
   - component: {fileID: 1054371961}
   - component: {fileID: 1054371960}
   - component: {fileID: 6271447025662216289}
+  - component: {fileID: 6527314269647272142}
+  - component: {fileID: 5842815993668307866}
   m_Layer: 10
   m_Name: Enemy_parent
   m_TagString: Untagged
@@ -739,3 +741,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   reactionTime: 0.2
+  enemy: {fileID: 0}
+  distanceToPlayer: 0
+--- !u!114 &6527314269647272142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764625424958316555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cb253cda7e5334bb8c7a5c2fd0a8f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  distanceToAttack: 2.5
+  attackCooldown: 1
+  state: 0
+  movementController: {fileID: 0}
+  animator: {fileID: 0}
+  eyes:
+  - {fileID: 4764625423691063746}
+  - {fileID: 4764625424944430836}
+--- !u!95 &5842815993668307866
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764625424958316555}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4f6a9bee0725015478f6329ee95cd7ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

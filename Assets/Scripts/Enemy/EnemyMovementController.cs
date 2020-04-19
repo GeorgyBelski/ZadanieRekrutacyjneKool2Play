@@ -7,6 +7,7 @@ public class EnemyMovementController : MonoBehaviour
     public float speed = 9;
     public float reactionTime = 0.2f;
     public Transform enemy;
+    public float distanceToPlayer;
     float timerReactionTime;
     Transform player;
     void Start()
@@ -35,7 +36,7 @@ public class EnemyMovementController : MonoBehaviour
             timerReactionTime = reactionTime;
             enemy.transform.LookAt(player.position);
         }
-        float distanceToPlayer = (transform.position - player.position).magnitude;
+        distanceToPlayer = (transform.position - player.position).magnitude;
 
         if (distanceToPlayer > 2.1f)
         { 
