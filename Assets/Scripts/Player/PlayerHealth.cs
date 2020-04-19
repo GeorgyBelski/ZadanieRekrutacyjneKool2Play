@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerHealth : HealthController
 {
+    public delegate void PlayerDeath();
+    public static event PlayerDeath playerDeathEvent;
+
     public static PlayerHealth player;
     void Awake()
     {
@@ -18,6 +21,8 @@ public class PlayerHealth : HealthController
     
     public override void ApplyDeath()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Player Death");
+        playerDeathEvent.Invoke();
+        gameObject.SetActive(false);
     }
 }

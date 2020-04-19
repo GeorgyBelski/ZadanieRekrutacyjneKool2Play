@@ -26,6 +26,8 @@ public class EnemyAttackController : MonoBehaviour
         }
         if (eyeMaterials.Count > 0)
         { startEyeColor = eyeMaterials[0].color; }
+
+        PlayerHealth.playerDeathEvent += GameOver;
     }
 
     void Update()
@@ -87,5 +89,10 @@ public class EnemyAttackController : MonoBehaviour
         animator.SetBool("Attack", false);
         state = EnemyState.Move;
         eyeMaterials.ForEach(material => material.color = startEyeColor);
+    }
+
+    void GameOver()
+    {
+        state = EnemyState.Move;
     }
 }

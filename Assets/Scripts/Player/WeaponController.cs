@@ -51,6 +51,7 @@ public class WeaponController : MonoBehaviour
         {
             if (activeWeapon)
             {
+                activeWeapon.state = WeaponState.Cooldawn;
                 activeWeapon.gameObject.SetActive(false);
             }
             activeWeapon = weaponList[index];
@@ -63,15 +64,15 @@ public class WeaponController : MonoBehaviour
     }
     void ChengeWeapon()
     {
-        if(Input.mouseScrollDelta.y > 0.5f)
+        if(Input.mouseScrollDelta.y >= 1 || Input.GetKeyDown(KeyCode.Tab))
         {
             currentIndex++;
-            if(currentIndex > weaponList.Count)
+            if(currentIndex >= weaponList.Count)
             {
                 currentIndex = 0;
-            }  
+            }
         }
-        else if(Input.mouseScrollDelta.y < -0.5f)
+        else if(Input.mouseScrollDelta.y <= -1)
         {
             currentIndex--;
             if (currentIndex < 0)

@@ -13,7 +13,10 @@ public class EnemyMovementController : MonoBehaviour
     void Start()
     {
         if (!enemy) { enemy = transform.Find("Enemy"); }
-        player = PlayerHealth.player.transform;
+        if (PlayerHealth.player)
+        { player = PlayerHealth.player.transform; }
+
+        PlayerHealth.playerDeathEvent += GameOver;
     }
 
     void FixedUpdate()
@@ -31,6 +34,8 @@ public class EnemyMovementController : MonoBehaviour
     }
     void Move()
     {
+        if (!player) { return; }
+
         if(timerReactionTime <= 0)
         {
             timerReactionTime = reactionTime;
@@ -43,5 +48,11 @@ public class EnemyMovementController : MonoBehaviour
 
             transform.position += enemy.transform.rotation * Vector3.forward * speed * Time.deltaTime; 
         }
+    }
+
+    void GameOver()
+    {
+        player = null;
+        enemy.transform.LookAt(transform.position + new Vector3(Random.Range(-1,1), 0, Random.Range(-1, 1)));
     }
 }

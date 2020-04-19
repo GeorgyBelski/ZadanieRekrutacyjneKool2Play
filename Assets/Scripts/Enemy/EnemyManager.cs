@@ -15,11 +15,12 @@ public class EnemyManager : MonoBehaviour
 
     Quaternion directionFromPlayer;
     Vector3 vectorFromPlayer;
+    bool isGameOver = false;
     
 
     void Start()
     {
-
+        PlayerHealth.playerDeathEvent += GameOver;
     }
 
     void Update()
@@ -28,6 +29,8 @@ public class EnemyManager : MonoBehaviour
     }
     void Spawn()
     {
+        if(isGameOver == true) { return; }
+
         if(timerSpewnCooldown > 0)
         {
             timerSpewnCooldown -= Time.deltaTime;
@@ -81,7 +84,11 @@ public class EnemyManager : MonoBehaviour
         else
         {
             Instantiate(enemyPrefab, position, directionFromPlayer);
-        }
-        
+        } 
+    }
+
+    void GameOver()
+    {
+        isGameOver = true;
     }
 }
