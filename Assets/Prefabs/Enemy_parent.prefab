@@ -657,6 +657,7 @@ GameObject:
   - component: {fileID: 6263137859953658088}
   - component: {fileID: 1054371961}
   - component: {fileID: 1054371960}
+  - component: {fileID: 6271447025662216289}
   m_Layer: 10
   m_Name: Enemy_parent
   m_TagString: Untagged
@@ -704,12 +705,12 @@ Rigidbody:
   m_GameObject: {fileID: 4764625424958316555}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 2
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &1054371960
 SphereCollider:
@@ -724,3 +725,17 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.62
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &6271447025662216289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764625424958316555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd18db0cf9046444b62aff13cdf23a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  reactionTime: 0.2

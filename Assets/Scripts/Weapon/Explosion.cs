@@ -43,7 +43,6 @@ public class Explosion : Missile
         }
         else if(hittedObject.layer == Globals.playerLayer)
         {
-            Debug.Log("hit Player " + Globals.playerLayer);
             PlayerHealth.player.ApplyDamage(damage);
         }
     }

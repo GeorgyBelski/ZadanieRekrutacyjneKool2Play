@@ -46,7 +46,6 @@ public class Grenade : Weapon
             yield return null;
         }
         state = WeaponState.Ready;
-        Debug.Log("Ready");
     }
     void ShowTrajectory()
     {

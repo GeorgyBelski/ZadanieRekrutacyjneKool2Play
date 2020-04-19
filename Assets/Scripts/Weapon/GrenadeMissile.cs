@@ -34,7 +34,7 @@ public class GrenadeMissile : Missile
     {
         
         base.ReleaseMissile(hand);
-        transform.position -= Vector3.down * 0.3f;
+        transform.position += Vector3.down * 0.3f;
         CalculateSpeed();
     }
     void CalculateSpeed()
@@ -59,9 +59,9 @@ public class GrenadeMissile : Missile
         explosionsInAir.Remove(missile);
         explosionsInReserve.Add(missile);
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        Debug.Log("GrenadeMissile collision :" + collision.gameObject);
-        DisableMissile();
+        if (collision.gameObject.layer == Globals.enemyLayer)
+        { DisableMissile(); }
     }
 }
