@@ -58,6 +58,7 @@ public class WeaponController : MonoBehaviour
             activeWeapon.transform.position = weaponPoint.transform.position;
             activeWeapon.gameObject.SetActive(true);
             currentIndex = index;
+            UIController.SelectUIWeapon(activeWeapon.type);
         }
     }
     void ChengeWeapon()

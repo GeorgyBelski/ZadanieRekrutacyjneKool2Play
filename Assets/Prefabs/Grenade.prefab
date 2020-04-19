@@ -237,6 +237,7 @@ MonoBehaviour:
   cooldawn: 0.5
   timerCooldown: 0
   state: 0
+  type: 1
   reloadTime: 0.2
   trajectory: {fileID: 6456882575772824915}
   trajectoryPositions: 18

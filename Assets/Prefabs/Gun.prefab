@@ -45,14 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08906210dc4b183489a5e1634d7199c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missilePrefab: {fileID: -4267439428425928509, guid: a88b1dc7b7c182c4fa07edc59d1cb72f,
+    type: 3}
   cooldawn: 0.4
   timerCooldown: 0
   state: 0
-  missilePrefab: {fileID: -4267439428425928509, guid: a88b1dc7b7c182c4fa07edc59d1cb72f,
-    type: 3}
   bulletSpeed: 30
-  bulletsCount: 0
-  bulletsInAirCount: 0
 --- !u!1 &4616958590454774144
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,8 +78,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4616958590454774144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.10326141, z: -0.046}
-  m_LocalScale: {x: 0.24073, y: 0.42135715, z: 0.2533202}
+  m_LocalPosition: {x: 0, y: -0.146, z: -0.069}
+  m_LocalScale: {x: 0.24073, y: 0.46993965, z: 0.19843331}
   m_Children: []
   m_Father: {fileID: 4616958589777074589}
   m_RootOrder: 1
@@ -112,7 +110,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4fce9f2945b092a46af5f2323d55acde, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -205,7 +203,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4fce9f2945b092a46af5f2323d55acde, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

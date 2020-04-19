@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum WeaponState { Ready, Cooldawn, Reload }
+public enum WeaponType { Gun, Grenade }
 public abstract class Weapon : MonoBehaviour
 {
     public Missile missilePrefab;
     public float cooldawn = .5f;
     public float timerCooldown = 0f;
     public WeaponState state = WeaponState.Ready;
+    public WeaponType type;
     void Start()
     {
         
