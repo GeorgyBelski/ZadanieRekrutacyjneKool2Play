@@ -10,6 +10,9 @@ public class WeaponController : MonoBehaviour
     public List<Weapon> weaponPrefabsList;
     [SerializeField] List<Weapon> weaponList = new List<Weapon>();
     public Transform player, weaponPoint;
+
+    public float changeWeaponCooldown = 0.1f;
+    float timerChangeWeapon = 0;
     void Start()
     {
         CreateWeapons();
@@ -19,7 +22,7 @@ public class WeaponController : MonoBehaviour
     void FixedUpdate()
     {
         Fire();
-        ChengeWeapon();
+        ChangeWeapon();
 
         if (activeWeapon)
         {
@@ -62,9 +65,15 @@ public class WeaponController : MonoBehaviour
             UIController.SelectUIWeapon(activeWeapon.type);
         }
     }
-    void ChengeWeapon()
+    void ChangeWeapon()
     {
-        if(Input.mouseScrollDelta.y >= 1 || Input.GetKeyDown(KeyCode.Tab))
+        if(timerChangeWeapon > 0)
+        {
+            timerChangeWeapon -= Time.deltaTime;
+            return;
+        }
+
+        if (Input.mouseScrollDelta.y >= 1 || Input.GetKeyDown(KeyCode.Tab))
         {
             currentIndex++;
             if(currentIndex >= weaponList.Count)
@@ -83,6 +92,7 @@ public class WeaponController : MonoBehaviour
         else { return; }
 
         PutInHand(currentIndex);
+        timerChangeWeapon = changeWeaponCooldown;
     }
 
     
